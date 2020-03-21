@@ -8,3 +8,7 @@ a{
     color:black;
     font-weight: bold;
 }
+
+* {
+    box-sizing:border-box;
+}
