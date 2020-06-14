@@ -1,0 +1,17 @@
+[33mcommit b884cf665f8e2ba3ada8961f43f943864ba79a54[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: harsh <harsh.p.walia@gmail.com>
+Date:   Wed Feb 5 21:48:34 2020 +0530
+
+    broken our  homepage into smaller component, finished styling our menu-item component
+
+[33mcommit 9c48636fea09dbc17776a1c181cd5f86e4d40bb7[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: harsh <harsh.p.walia@gmail.com>
+Date:   Tue Feb 4 23:29:05 2020 +0530
+
+    created project with create react app and added files for homepage
+
+[33mcommit b899022d087a5086e264bf88b87f96733e96fd32[m
+Author: harsh <harsh.p.walia@gmail.com>
+Date:   Tue Feb 4 22:38:10 2020 +0530
+
+    Initial commit from Create React App
