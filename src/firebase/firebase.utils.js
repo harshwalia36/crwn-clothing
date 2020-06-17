@@ -13,6 +13,35 @@ const config={
     measurementId: "G-ECPRQ9ZN71"
   };
 
+ export const createUserProfileDocument=async (userAuth ,additionalData) =>{
+   if(!userAuth)
+    return;
+   
+    const userRef =firestore.doc(`users/${userAuth.uid}`);        //create  userRef at the path provided
+
+    const snapshot = await userRef.get();         //take a snapshot of the userRef to know the data exists or not
+
+    // docRef is used to perform CRUD operation on firestore database
+    if(!snapshot.exists)
+    {
+      const {displayName, email} = userAuth;
+      const createdAt= new Date();
+
+      try{
+            await userRef.set({
+              displayName,
+              email,
+              createdAt,
+              ...additionalData
+            })
+      }
+      catch(err){
+          console.log('error creating a user' , err.message);
+      }   
+    }
+    return userRef; 
+ }
+   
   firebase.initializeApp(config);
 
   export const auth = firebase.auth();
