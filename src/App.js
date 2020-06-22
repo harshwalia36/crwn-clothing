@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Route} from 'react-router-dom';
+import {Route , Redirect} from 'react-router-dom';
 import { connect } from 'react-redux'; 
 
 import Homepage from './pages/homepage/homepage.component';
@@ -48,14 +48,18 @@ const {setCurrentUser} = this.props;
         <Header />
         <Route exact path='/' component={Homepage} />
         <Route exact path='/shop' component={ShopPage} />
-        <Route exact path='/signin' component={SigninAndSignUpPage} />
+        <Route exact path='/signin' render={() => this.props.currentUser? (<Redirect to="/" />):(<SigninAndSignUpPage/>)} />
       </div>
     )
   }
 }
+
+const mapStateToProps = ({user})  =>({           //now, this func. will give access to this.state.currentUser
+  currentUser:user.currentUser  
+});
  
-const mapDispatchToprops = dispatch => ({
+const mapDispatchToprops = dispatch => ({                     //this func. will set the currentUser when action occours by dispatching the user
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 
-export default connect(null,mapDispatchToprops)(App);
+export default connect(mapStateToProps ,mapDispatchToprops)(App);
