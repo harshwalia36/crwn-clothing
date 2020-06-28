@@ -1,0 +1,272 @@
+﻿1
+00:00:01,290 --> 00:00:09,540
+Now that we have our cart selectors let's actually convert our user map state to props selectors to
+
+2
+00:00:09,540 --> 00:00:20,490
+also use re select so let's make a new user dot selector digest and let's actually look at what we're
+
+3
+00:00:20,490 --> 00:00:28,410
+pulling on if I remember correctly our header component uses it and all it gets is the current user
+
+4
+00:00:29,500 --> 00:00:36,570
+so at this point it might as well just be worth it for us to memorize the selectors using both a hidden
+
+5
+00:00:36,570 --> 00:00:46,780
+selector as well for cart and our current user selector for our user so we'll import in our create selector
+
+6
+00:00:49,120 --> 00:01:00,340
+from re select and we're just going to get our state selector select the user equal state which for
+
+7
+00:01:00,340 --> 00:01:13,910
+sure is state DOT user and then export const select current user equals create selector and as you remember
+
+8
+00:01:13,910 --> 00:01:24,340
+the first argument can be either an array of our input selectors and then our last argument being the
+
+9
+00:01:24,340 --> 00:01:28,260
+function that gets the return of this input selector.
+
+10
+00:01:28,310 --> 00:01:34,570
+So our user reducer and then we'll return user to current user.
+
+11
+00:01:34,630 --> 00:01:41,890
+Now another thing is actually let's say we imagine we had another selector like say we wanted to also
+
+12
+00:01:41,890 --> 00:01:45,530
+pull off our hidden right.
+
+13
+00:01:45,530 --> 00:01:55,640
+So we had a select cart and then let's say we needed the cart hit in value with our user value for some
+
+14
+00:01:55,640 --> 00:01:56,540
+reason right.
+
+15
+00:01:56,600 --> 00:02:01,790
+I don't really know but you can imagine where we would come up with a case where we might want to use
+
+16
+00:02:01,790 --> 00:02:07,890
+multiple inputs selectors and as we know from our last example we would get cart like this where we
+
+17
+00:02:07,890 --> 00:02:10,970
+would be able to use it in some kind of way.
+
+18
+00:02:11,580 --> 00:02:16,080
+But there's another way that you can actually structure your create selector where instead of passing
+
+19
+00:02:16,080 --> 00:02:24,450
+in an array you just pass it in as arguments in successive order the function in the animal still remain
+
+20
+00:02:24,450 --> 00:02:25,140
+the same.
+
+21
+00:02:25,140 --> 00:02:31,110
+So you can either pass all of your inputs selectors in in the order that you want them to appear what
+
+22
+00:02:31,110 --> 00:02:38,790
+their outputs inside of are function parameters or we can just pass them in as an array.
+
+23
+00:02:38,790 --> 00:02:40,620
+It really makes no difference.
+
+24
+00:02:40,620 --> 00:02:45,800
+Personally I like to use the array but it doesn't really matter.
+
+25
+00:02:46,090 --> 00:02:48,280
+So let's get rid of this because we don't need it.
+
+26
+00:02:48,340 --> 00:02:58,820
+So now we have our current user let's also make the one for r hidden and we'll just export contest select
+
+27
+00:02:58,880 --> 00:03:12,880
+cart hidden equals create selector with our select cart selector and then we'll just return cart Doc
+
+28
+00:03:12,880 --> 00:03:16,200
+cart hidden part Doc cart hidden.
+
+29
+00:03:16,330 --> 00:03:22,100
+OK and now let's start replacing the components we have with the respective selectors
+
+30
+00:03:27,360 --> 00:03:37,700
+we'll import also in another thing called create structured selector from re select and I'll show you
+
+31
+00:03:37,700 --> 00:03:41,540
+what that does in a second once we bring in our respective selectors
+
+32
+00:03:45,400 --> 00:03:52,310
+and we want select cart hidden and we also want select current user
+
+33
+00:03:56,280 --> 00:04:08,290
+select current user so how we've seen this done before was where we would pass in our state into our
+
+34
+00:04:08,290 --> 00:04:09,100
+selectors right.
+
+35
+00:04:09,130 --> 00:04:11,530
+So let's say we want a current user.
+
+36
+00:04:11,530 --> 00:04:20,050
+Well we would take the whole state and then say current user points to our select current user.
+
+37
+00:04:20,050 --> 00:04:26,770
+And then we pass the state of now we know that for hidden it's pretty much the same thing we will call
+
+38
+00:04:26,770 --> 00:04:30,180
+a select card hidden and then pass in the state.
+
+39
+00:04:30,180 --> 00:04:35,460
+But if we have five six selectors or pretty much just doing the exact same thing five six times.
+
+40
+00:04:35,460 --> 00:04:35,760
+Right.
+
+41
+00:04:36,570 --> 00:04:40,260
+So what we can actually do is use our create structured selector call
+
+42
+00:04:43,720 --> 00:04:53,120
+and instead of passing it as a function we just pass it like so where the properties that we want point
+
+43
+00:04:53,120 --> 00:05:00,060
+to the correct selector and then create structure selector will automatically pass are top level state
+
+44
+00:05:00,060 --> 00:05:07,800
+that we get as our map states props into each subsequent selector and now if we look at our head our
+
+45
+00:05:07,800 --> 00:05:12,360
+component we'll see that our code should remain the same.
+
+46
+00:05:12,520 --> 00:05:19,030
+We still get our current user inside of our state and it's being passed in
+
+47
+00:05:22,230 --> 00:05:27,180
+and we are card hidden and still works as usual.
+
+48
+00:05:27,190 --> 00:05:33,320
+Now let's see where else we have any map states of props being called objects.
+
+49
+00:05:33,540 --> 00:05:34,800
+We can do this here to
+
+50
+00:05:37,960 --> 00:05:38,980
+import in
+
+51
+00:05:41,760 --> 00:05:43,430
+from redux.
+
+52
+00:05:43,920 --> 00:05:48,130
+User selectors select current user
+
+53
+00:05:51,410 --> 00:05:58,310
+now even though we only have one selected property that we're passing into our maps it's props.
+
+54
+00:05:58,310 --> 00:06:05,950
+We should still use create structured selector because if in the future we do need to pull in more then
+
+55
+00:06:06,010 --> 00:06:10,810
+it's easy because we've already converted our code over to using create structured selector
+
+56
+00:06:13,640 --> 00:06:22,520
+and the main benefit of using it is just that it extends us a little bit less code rewrite than we would
+
+57
+00:06:22,520 --> 00:06:23,450
+normally have to do
+
+58
+00:06:26,810 --> 00:06:29,400
+select current user.
+
+59
+00:06:29,430 --> 00:06:36,000
+Now let's actually use create structure selector and all of our other components like our card dropdown
+
+60
+00:06:41,660 --> 00:06:47,800
+so we've got to import our create structured selector and then we can just replace this part of our
+
+61
+00:06:47,800 --> 00:06:56,440
+code and take out the state and then the last one is I believe cart icon.
+
+62
+00:06:56,650 --> 00:06:57,280
+Yes
+
+63
+00:07:03,710 --> 00:07:05,790
+and then same thing
+
+64
+00:07:10,990 --> 00:07:12,020
+OK.
+
+65
+00:07:12,110 --> 00:07:23,190
+And now if we look our code still all works the same but now we are able to memorize all of our selector.
+
+66
+00:07:23,440 --> 00:07:30,040
+OK so moving forward now all of our code is going to be written with re select regarding our selectors
+
+67
+00:07:30,960 --> 00:07:39,070
+and this is actually the most common practice when using redux inside of a react application while also
+
+68
+00:07:39,070 --> 00:07:40,420
+using re select.
+
