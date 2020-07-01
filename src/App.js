@@ -6,9 +6,12 @@ import { connect } from 'react-redux';
 import Homepage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component.jsx';
 import SigninAndSignUpPage from './pages/signin-and-signup-page/signin-and-signup-page.component.jsx';
+import CheckoutPage from './pages/checkout/checkout.component';
+
 import Header from './components/header/header.component.jsx';
 import {auth, createUserProfileDocument} from './firebase/firebase.utils';
 import {setCurrentUser} from './redux/user/user.actions'
+import {selectCurrentUser} from './redux/user/user.selector';
 
 
 
@@ -48,14 +51,15 @@ const {setCurrentUser} = this.props;
         <Header />
         <Route exact path='/' component={Homepage} />
         <Route exact path='/shop' component={ShopPage} />
+        <Route exact path='/checkout' component={CheckoutPage} />
         <Route exact path='/signin' render={() => this.props.currentUser? (<Redirect to="/" />):(<SigninAndSignUpPage/>)} />
       </div>
     )
   }
 }
 
-const mapStateToProps = ({user})  =>({           //now, this func. will give access to this.state.currentUser
-  currentUser:user.currentUser  
+const mapStateToProps = (state)  =>({           //now, this func. will give access to this.state.currentUser
+  currentUser:selectCurrentUser  
 });
  
 const mapDispatchToprops = dispatch => ({                     //this func. will set the currentUser when action occours by dispatching the user
