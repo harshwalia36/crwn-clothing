@@ -4,7 +4,7 @@ import {createStructuredSelector} from 'reselect';
 
 import CustomButton from '../custom-button/custom-button.component';
 import CartItem from '../cart-item/cart-item.component';
-import {withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';     //to pass history props inside the component
   
 import {selectCartItems} from '../../redux/cart/cart.selector';
 import {toggleCartHidden} from '../../redux/cart/cart.actions';
@@ -12,7 +12,7 @@ import {toggleCartHidden} from '../../redux/cart/cart.actions';
 import './cart-dropdown.styles.scss';
 
 
-//history and dispatch are passed by defaults u can check by ...otherProps
+// dispatch are passed by default u can check by ...otherProps
 const CartDropdown = ({cartItems, history,dispatch}) =>(
     <div className="cart-dropdown">
         <div className="cart-items">
