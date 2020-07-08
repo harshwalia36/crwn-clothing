@@ -4,7 +4,7 @@ import FormInput from '../form-input/form-input.component.jsx';
 import CustomButton from '../custom-button/custom-button.component';
 
 import {auth, signInWithGoogle} from '../../firebase/firebase.utils'
-import { Link, Route } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, Route } from 'react-router-dom';
 
 class SignIn extends React.Component{
     constructor(){
@@ -30,9 +30,6 @@ handleSubmit= async event => {
      {
          console.log(err);
      }
-    
-    
-
     }
 
 handleChange=event => {

@@ -7,5 +7,5 @@ const selectUser =state =>state.user;
 //output selector
 export const selectCurrentUser = createSelector(
     [selectUser],
-    user => user.CurrentUser
+    user => user.currentUser
 )
