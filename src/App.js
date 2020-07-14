@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {Route , Redirect} from 'react-router-dom';
 import { connect } from 'react-redux'; 
+import styled from 'styled-components';
 
 import Homepage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component.jsx';
